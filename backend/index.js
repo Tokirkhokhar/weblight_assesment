@@ -2,6 +2,8 @@ const express = require("express");
 
 const  userRouter  = require("./router/userRouter");
 const catRouter = require("./router/categoryRouter");
+const productRouter = require("./router/productRouter");
+const orderRouter = require("./router/orderRouter");
 
 require("./config/db");
 const cors = require('cors');
@@ -15,6 +17,9 @@ app.use(express.json());
 
 app.use("/api/user",userRouter);
 app.use("/api/category",catRouter);
+app.use("/api/product", productRouter);
+app.use("/api/order",orderRouter)
+
 app.use("/api",(req,res,next) =>{
     res.send("hello")
 })

@@ -12,13 +12,17 @@ const orderSchema = new Schema({
         required: true,
     },
     totalAmount: {
-        type: String,
+        type: Number,
         required: true,
     },
     products: [{ 
         type: mongoose.Types.ObjectId, 
         ref: "Product", required: true 
     }],
+    userId : { 
+        type: mongoose.Types.ObjectId, 
+        ref: "User",
+    }
 })
 
 module.exports =  mongoose.model("Order", orderSchema);
