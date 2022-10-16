@@ -1,7 +1,8 @@
 const Product = require("../model/Product");
 const bcrypt = require("bcryptjs");
 
-const getAllProduct = async(req,res,next) =>{
+const getAllProduct = async (req,res,next) =>{
+  res.set('Access-Control-Allow-Origin', '*');
     let products;
 
     try{
@@ -17,7 +18,8 @@ const getAllProduct = async(req,res,next) =>{
     return res.status(200).json({products});
 }
 
-const addNewProduct = async(req,res,next) =>{
+const addNewProduct = async (req,res,next) =>{
+  res.set('Access-Control-Allow-Origin', '*');
    const { name , desc , price , imageLink , categoryId } = req.body;
  
    const product = new Product({

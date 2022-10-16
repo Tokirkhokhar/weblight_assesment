@@ -1,7 +1,8 @@
 const Category = require("../model/Category");
 const bcrypt = require("bcryptjs");
 
-const getAllCategory = async(req,res,next) =>{
+const getAllCategory = async (req,res,next) =>{
+  res.set('Access-Control-Allow-Origin', '*');
     let categories;
 
     try{
@@ -17,7 +18,8 @@ const getAllCategory = async(req,res,next) =>{
     return res.status(200).json({categories});
 }
 
-const addNewCat = async(req,res,next) =>{
+const addNewCat = async (req,res,next) =>{
+  res.set('Access-Control-Allow-Origin', '*');
    const { name , desc} = req.body;
  
    const category = new Category({

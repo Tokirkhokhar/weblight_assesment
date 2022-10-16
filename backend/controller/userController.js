@@ -1,7 +1,8 @@
 const User = require("../model/User");
 const bcrypt = require("bcryptjs");
 
-const getAllUser = async(req,res,next) =>{
+const getAllUser = async (req,res,next) =>{
+  res.set('Access-Control-Allow-Origin', '*');
     let users;
 
     try{
@@ -17,7 +18,8 @@ const getAllUser = async(req,res,next) =>{
     return res.status(200).json({users});
 }
 
-const signUp = async(req,res,next) =>{
+const signUp = async (req,res,next) =>{
+  res.set('Access-Control-Allow-Origin', '*');
    const { name , email , password } = req.body;
 
    let existingUser;

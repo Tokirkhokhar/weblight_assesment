@@ -1,6 +1,7 @@
 const Order = require("../model/Order");
 
-const getAllOrder = async(req,res,next) =>{
+const getAllOrder = async (req,res,next) =>{
+  res.set('Access-Control-Allow-Origin', '*');
     let order;
 
     try{
@@ -16,7 +17,8 @@ const getAllOrder = async(req,res,next) =>{
     return res.status(200).json({order});
 }
 
-const addNewOrder = async(req,res,next) =>{
+const addNewOrder = async (req,res,next) =>{
+  res.set('Access-Control-Allow-Origin', '*');
    const { name , address , totalAmount , products , userId} = req.body;
  
    const order = new Order({
