@@ -56,6 +56,7 @@ const Cart = () => {
     console.log(formData);
     formData.totalAmount = total;
     formData.products = [];
+    formData.userId = "634ba989da060a8aae85c0cd"
     products.map((product:any, index: number) => (
       formData.products.push(product.prod._id)
     ))
