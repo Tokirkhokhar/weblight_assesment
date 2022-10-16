@@ -1,15 +1,18 @@
 import React from 'react';
 import './App.css';
-import Header from './Components/Customheader/Header';
-import Fillter from './Components/Filter Screen/Fillter';
-import ProductContainer from './Components/ProductsContainer/ProductContainer';
+import { BrowserRouter ,Routes, Route, Link } from "react-router-dom";
+import Home from "./Components/Home/Home"
 
 function App() {
   return (
    <>
-          <Header/>
-          <Fillter/>
-          <ProductContainer />    
+   <BrowserRouter>
+          <Routes>
+            <Route index path="/" element={<Home /> } />
+            </Routes>
+    </BrowserRouter>
+
+             
   </>
   )
 }
