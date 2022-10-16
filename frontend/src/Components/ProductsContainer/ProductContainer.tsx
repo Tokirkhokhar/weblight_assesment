@@ -7,8 +7,8 @@ import "./ProductContainer.css"
 import Fillter from '../Filter Screen/Fillter';
 const ProductContainer = () => {
   const [products , setproducts] = useState([]);
-  const [price,setprice]=useState();
-  const [category,setcategory]=useState();
+  const [price,setprice]=useState("-1");
+  const [category,setcategory]=useState("-1");
   const handleChangePrice=(e:any)=>{
       setprice(e.target.value);
   }
@@ -29,16 +29,42 @@ const ProductContainer = () => {
     });
   }, []);
   // console.log(products);
-  // console.log(category);
-  function inrange(product:any){
-    return (product.price<500);
-  }
+  var copyProducts=[...products];
   const handleSbmit=(e:any)=>{
     setprice(price)
+    var max:number 
+    var min:number
+    var cat:String
+    switch (price) {
+      case "0":
+         max=100;
+         min=0;
+        break;
+      case "1":
+         max=500;
+         min=101;
+         break;
+      case "2":
+         max=1000;
+         min=501;
+        break;
+    }
     setcategory(category)
-    let result=products.filter(inrange)
+    switch (category) {
+      case "0":
+         cat="Electronic"
+        break;
+      case "1":
+        cat="furnished"
+         break;
+    }
+    let result=products.filter( function(product:any){
+        console.log(max);
+        
+      return(product.price <= max && product.price >= min ||(category!="-1" && product.catName==cat))
+    })
     setproducts(result);
-    console.log(result);
+    console.log(copyProducts);
     
   } 
   
@@ -48,15 +74,14 @@ const ProductContainer = () => {
      <div className="container c1">
         <div className="dropdown">
                 <select className ="form-select" aria-label="Default select example" onChange={handleChangeCategory}>
-                  <option selected>Category</option>
-                  <option value="0">One</option>
-                  <option value="1">Two</option>
-                  <option value="2">Three</option>
+                  <option selected value="-1">Category</option>
+                  <option value="0">Electronic</option>
+                  <option value="1">Furnished</option>
                 </select>
         </div>
         <div className="dropdown" onChange={handleChangePrice}>
                 <select className="form-select" aria-label="Default select example">
-                  <option selected>Price</option>
+                  <option selected value="-1">Price</option>
                   <option value="0">0-100</option>
                   <option value="1">100-500</option>
                   <option value="2">500-1000</option>
