@@ -26,10 +26,8 @@ const ProductContainer = () => {
       <Container className='p_container'>
            {products &&
           products.map((product:any , index:number) => (
-
             <ProductCard key={index} id={product._id} prod={product} />
           ))}
-          <ProductCard/>
       </Container>
     
   )

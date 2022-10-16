@@ -8,7 +8,9 @@ const productSchema = new Schema({
         required: true,
     },
     decs :  {
-        type: String
+        type: String,
+        required : true,
+        default : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec tortor vitae est pellentesque ullamcorper et nec diam. Sed auctor elit quis mattis posuere."
     },
     price: {
         type: Number,
