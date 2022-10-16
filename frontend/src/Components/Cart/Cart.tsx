@@ -22,24 +22,29 @@ const Cart = () => {
     setTotal(totalNum);
     console.log(products);
   }, []);
+
+  // Increment 
   const plus = (id: any) => {
     let copyProd: any = [...products];
     const ele = document.getElementById(id.index) as HTMLInputElement;
-
     copyProd[id.index].qnt = copyProd[id.index].qnt + 1;
     setProduct(products);
-    console.log(products);
+    // change Total
+    let tNum:any = total
+    tNum += copyProd[id.index].prod.price;
+     setTotal(tNum)
+    
     ele?.stepUp();
   };
-  const cancle = (id: any) => {
-    console.log("cancling");
-  };
+  
   const minus = (id: any) => {
     let copyProd: any = [...products];
-    if (copyProd[id.index].qnt > 0) {
+    if (copyProd[id.index].qnt > 1) {
       copyProd[id.index].qnt = copyProd[id.index].qnt - 1;
       setProduct(products);
-      console.log(products);
+      let tNum:any = total
+      tNum -= copyProd[id.index].prod.price;
+      setTotal(tNum)
     }
     const ele = document.getElementById(id.index) as HTMLInputElement;
     ele?.stepDown();
@@ -55,12 +60,9 @@ const Cart = () => {
   const Buynow = () => {
     console.log(formData);
     formData.totalAmount = total;
-    formData.products = [];
+    formData.products = products
     formData.userId = "634ba989da060a8aae85c0cd"
-    products.map((product:any, index: number) => (
-      formData.products.push(product.prod._id)
-    ))
-    console.log(formData);
+  
     sendRequest()
       .then((data) => console.log(data))
       .then(()=> localStorage. clear())
@@ -105,7 +107,6 @@ const Cart = () => {
                                 <a href="#!" className="float-end text-black">
                                   <i
                                     className="fas fa-times"
-                                    onClick={() => cancle(1)}
                                   />
                                 </a>
                                 <h5 className="text-primary">
@@ -127,9 +128,9 @@ const Cart = () => {
                                       className="quantity fw-bold text-black"
                                       min={0}
                                       name="quantity"
-                                      defaultValue={2}
                                       type="number"
                                       id={index.toString()}
+                                      value = {product.qnt}
                                     />
                                     <button
                                       onClick={() => plus({ index })}
