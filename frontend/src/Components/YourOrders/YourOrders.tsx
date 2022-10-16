@@ -48,18 +48,6 @@ const YourOrders = () => {
                 ))
                 }
           
-            {/* <div className="row">
-                <div className="col-md-2"><img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/13.webp" className="media-object img-thumbnail" /></div>
-                <div className="col-md-10">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <span><strong>Order name</strong></span> <span className="label label-info">group name</span><br />
-                            Quantity : 2, cost: $323.13 <br />
-                       </div>
-                        <div className="col-md-12">order made on: 05/31/2014</div>
-                    </div>
-                </div>
-            </div> */}
            
 
            

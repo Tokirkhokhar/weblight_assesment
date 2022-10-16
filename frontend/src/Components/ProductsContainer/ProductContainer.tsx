@@ -4,7 +4,7 @@ import ProductCard from '../Product card/ProductCard'
 import axios from "axios";
 
 import "./ProductContainer.css"
-import Fillter from '../Filter Screen/Fillter';
+
 const ProductContainer = () => {
   const [products , setproducts] = useState([]);
   const [price,setprice]=useState("-1");
@@ -20,7 +20,8 @@ const ProductContainer = () => {
       .get("http://localhost:5000/api/product")
       .catch((err) => console.log(err));
     const data:any = await res.data;
-
+   console.log(data);
+   
     return data;
   };
   useEffect(() => {
@@ -67,6 +68,7 @@ const ProductContainer = () => {
     console.log(copyProducts);
     
   } 
+  console.log(products);
   
   return (
     <>
