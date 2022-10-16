@@ -3,15 +3,10 @@ import { Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './Cart.css'
 const Cart = () => {
-    // const plus = ()=>{
-    //     this.parentNode.querySelector('input[type=number]').stepUp();
-    // }
+
     const plus=(id:any)=>{
         const ele= document.getElementById(id) as HTMLInputElement;
-        // const ele = document
         ele?.stepUp();
-        // console.log(ele?.parentNode);
-
     }
     const cancle=(id:any)=>{
         console.log("cancling");
