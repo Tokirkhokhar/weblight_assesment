@@ -4,6 +4,7 @@ import ProductCard from '../Product card/ProductCard'
 import axios from "axios";
 
 import "./ProductContainer.css"
+import Fillter from '../Filter Screen/Fillter';
 const ProductContainer = () => {
   const [products , setproducts] = useState([]);
   const sendReq : Function = async () => {
@@ -22,14 +23,15 @@ const ProductContainer = () => {
   console.log(products);
 
   return (
-    
+    <>
+    <Fillter/>
       <Container className='p_container'>
            {products &&
           products.map((product:any , index:number) => (
             <ProductCard key={index} id={product._id} prod={product} />
           ))}
       </Container>
-    
+    </>
   )
 }
 

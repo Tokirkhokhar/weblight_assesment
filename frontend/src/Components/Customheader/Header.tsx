@@ -2,18 +2,18 @@ import React from 'react'
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import "./Header.css"
+import {Link} from 'react-router-dom'
 
 const Header = () => {
-  const name: string = "tokir";
   return (
     <Navbar className='nav'>
     <Container className='container'>
-      <Navbar.Brand href="#home">Ecom</Navbar.Brand>
+    <Link to="./" style={{textDecoration:"none"}}><Navbar.Brand >Ecom</Navbar.Brand></Link>
       <Navbar.Toggle />
       <Navbar.Collapse>
       <ul className="navbar-nav mr-auto">
         <li className="nav-item active">
-          <a className="nav-link" href="#">History  <span className="sr-only">(current)</span></a>
+          <Link className="nav-link" to="./history">History  <span className="sr-only">(current)</span></Link>
         </li>
       </ul>
       </Navbar.Collapse>
@@ -22,7 +22,9 @@ const Header = () => {
         <i className="fa-solid fa-user"></i>
         </Navbar.Text>
         <Navbar.Text className='icon'>
-        <i className="fa-solid fa-basket-shopping"></i>
+          <Link to="./cart">
+          <i className="fa-solid fa-basket-shopping"></i>
+          </Link>
         </Navbar.Text>
       </Navbar.Collapse>
     </Container>
