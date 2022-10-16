@@ -16,11 +16,19 @@ const ProductCard = (props:any) => {
   const addItem = (prod:any)  => 
   {
     let localCart:any = localStorage.getItem("cart");
-   
-    localCart = JSON.parse(localCart);
+    let cartTotal:any = localStorage.getItem("total");
 
+    localCart = JSON.parse(localCart);
     console.log(localCart);
     
+    if(cartTotal == null)
+    cartTotal = 0;
+    
+    
+    cartTotal = parseInt(cartTotal) +  prod.price;
+    
+    localStorage.setItem("total", cartTotal)
+
     let cartCopy:any
     if(localCart != null)
     {
@@ -29,9 +37,7 @@ const ProductCard = (props:any) => {
       cartCopy = [];
     }
   
-    
-    // let existingItem:any = cartCopy.find(cartItem => cartItem.Prod == item );
-    
+    // let existingItem:any = cartCopy.find(cartItem => cartItem.Prod == item );  
     // //if item already exists
     // if (existingItem) {
     //     existingItem.quantity += item.quantity 

@@ -22,6 +22,10 @@ const orderSchema = new Schema({
     userId : { 
         type: mongoose.Types.ObjectId, 
         ref: "User",
+    },
+    date: {
+        type :Date,
+        default : Date.now()
     }
 })
 

@@ -32,5 +32,18 @@ const addNewOrder = async (req,res,next) =>{
    catch(e){console.log(e);}
 }
 
+const getOrderByUserId = async (req,res,next) => {
+    const uId =  req.params.id
+    res.set('Access-Control-Allow-Origin', '*');
 
-module.exports = { getAllOrder, addNewOrder};
+    console.log(uId);
+    let order 
+    try {
+        order =  await Order.find({ userId: uId })
+    } catch (error) {
+        
+    }
+    return res.status(200).json(order)
+}
+
+module.exports = { getAllOrder, addNewOrder , getOrderByUserId};
