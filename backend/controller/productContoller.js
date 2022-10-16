@@ -20,10 +20,10 @@ const getAllProduct = async (req,res,next) =>{
 
 const addNewProduct = async (req,res,next) =>{
   res.set('Access-Control-Allow-Origin', '*');
-   const { name , desc , price , imageLink , categoryId } = req.body;
+   const { name , desc , price , imageLink , categoryId , catName} = req.body;
  
    const product = new Product({
-    name , desc , price , imageLink , categoryId
+    name , desc , price , imageLink , categoryId , catName
    });
 
    try{

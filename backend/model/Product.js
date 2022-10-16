@@ -17,6 +17,10 @@ const productSchema = new Schema({
     imageLink : {
         type : String
     },
+    catName : {
+        type : String,
+        default : "None"
+    },
     categoryId: { 
         type: mongoose.Types.ObjectId, 
         ref: "Category", required: true 
