@@ -8,12 +8,10 @@ const productSchema = new Schema({
         required: true,
     },
     decs :  {
-        type: String,
-        required: true,
-        unique: true,
+        type: String
     },
     price: {
-        type: String,
+        type: Number,
         required: true,
     },
     imageLink : {
