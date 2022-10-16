@@ -1,0 +1,15 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+nav{
+    background: #ebc1c1;
+    color: #000;
+}
+.icon{
+    margin-right: 20px;
+}
+.icon i{
+    font-size: 21px;
+    color: #000;
+}
