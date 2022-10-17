@@ -9,6 +9,7 @@ const ProductContainer = () => {
   const [products , setproducts] = useState([]);
   const [price,setprice]=useState("-1");
   const [category,setcategory]=useState("-1");
+  const [prevProduct, setPrevProduct] = useState([]);
   const handleChangePrice=(e:any)=>{
       setprice(e.target.value);
   }
@@ -27,10 +28,10 @@ const ProductContainer = () => {
   useEffect(() => {
     sendReq().then((data:any) => {
       setproducts(data.products);
+      setPrevProduct(data.products);
     });
   }, []);
   // console.log(products);
-  var copyProducts=[...products];
   const handleSbmit=(e:any)=>{
     setprice(price)
     var max:number 
@@ -49,23 +50,26 @@ const ProductContainer = () => {
          max=1000;
          min=501;
         break;
+      default:
+         min = 0
+         max = 100000000
     }
     setcategory(category)
     switch (category) {
       case "0":
-         cat="Electronic"
+         cat="Electronics"
         break;
       case "1":
         cat="furnished"
          break;
+     
     }
-    let result=products.filter( function(product:any){
+    let result= prevProduct.filter( function(product:any){
         console.log(max);
         
-      return(product.price <= max && product.price >= min ||(category!="-1" && product.catName==cat))
+      return(product.price <= max && product.price >= min  && (category!="-1"?product.catName==cat:true))
     })
     setproducts(result);
-    console.log(copyProducts);
     
   } 
   console.log(products);
