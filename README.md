@@ -17,7 +17,7 @@
   
 
 ## Technology ⚙ :
- - NodeJS and express js for backend and APIA
+ - NodeJS and express js for backend and APIs
  
  - typescript and ReactJs
  
