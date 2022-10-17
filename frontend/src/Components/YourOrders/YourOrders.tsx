@@ -14,7 +14,7 @@ const YourOrders = () => {
       };
       useEffect(() => {
         sendReq().then((data:any) => {
-          setorders(data.order);
+          setorders(data);
         });
       }, []);
       console.log(orders);
