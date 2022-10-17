@@ -7,7 +7,7 @@ const YourOrders = () => {
     const [orders , setorders] = useState([]);
     const sendReq : Function = async () => {
         const res : any  = await axios
-          .get("http://localhost:5000/api/order")
+          .get("http://localhost:5000/api/order/getById/634ba989da060a8aae85c0cd")
           .catch((err) => console.log(err));
         const data:any = await res.data;
         return data;
@@ -33,24 +33,31 @@ const YourOrders = () => {
             {
                 orders && 
                 orders.map((order:any , index:number) => (
-                    <div className="row">
-                    <div className="col-md-2"><img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/13.webp" className="media-object img-thumbnail" /></div>
-                    <div className="col-md-10">
-                        <div className="row">
-                            <div className="col-md-12">
-                                <span><strong>Order name</strong></span> <span className="label label-info">{order.name}</span><br />
-                                Quantity : {order.products.length}, cost: {order.totalAmount} <br />
+                    <div className="row mt-3">
+                     <div className="col-md-4">
+                     <span><strong>Order name</strong></span> <span className="label label-info">{order.name}</span><br />
+                     </div>
+                     <div className="col-md-8">
+                     <span><strong>Order Address</strong></span> <span className="label label-info">{order.address}</span><br />
+                     </div>
+                     { order.products.map((prod:any) => (
+                      <div className='row'>
+                      <div className="col-md-2">
+                        <img src={prod.prod.imageLink} className="media-object img-thumbnail" /></div>
+                       <div className="col-md-10">
+                           <div className="row">
+                               <div className="col-md-12">
+                                   <h4>{prod.prod.name}</h4>
+                                  <h6>Quantity : {prod.qnt} , Price : {prod.prod.price}</h6>  <br />
+                              </div>
                            </div>
-                            <div className="col-md-12">order made on: 05/31/2014</div>
-                        </div>
-                    </div>
+                       </div>
+                      </div>
+                     )) }
+                    <div className="col-md-12">order made on: {order.date.substring(0,10)} </div>
                    </div>
                 ))
                 }
-          
-           
-
-           
         </div>
         </div>
 </div>
