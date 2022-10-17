@@ -1,7 +1,8 @@
 import React from 'react'
 import "./ProductCard.css"
 import {useState} from 'react'
-
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 interface Product {
   name: string,
   decs: string,
@@ -15,6 +16,7 @@ const ProductCard = (props:any) => {
   
   const addItem = (prod:any)  => 
   {
+    toast("Your Product Added to cart!")
     let localCart:any = localStorage.getItem("cart");
     let cartTotal:any = localStorage.getItem("total");
 
@@ -57,6 +59,7 @@ const ProductCard = (props:any) => {
     
   }
   
+  
   const prod : any = props.prod;
   const jsonItems = localStorage.getItem("cart");
   
@@ -70,14 +73,16 @@ const ProductCard = (props:any) => {
             <div className="card-body">
                 <div className="roww">
                    <h5 className="card-title">{prod.name}</h5>
-                   <p>{prod.price}</p>
+                   <p style={{color: "green"}} >{prod.price} Rs</p>
                 </div>
-                <p className='text-info'>{prod.catName}</p>
-                <p>{prod.decs}</p>
+                <p style={{color: "purple"}}>{prod.catName}</p>
+                <p>{prod.desc.substring(0,50)}</p>
                 <p className="btn btn-primary" onClick={()=>addTocart(prod)}>Add to card</p>
             </div>
         </div>
+        <ToastContainer/>
     </>
+
   )
 }
 

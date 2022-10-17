@@ -25,7 +25,8 @@ const YourOrders = () => {
 <div className="container bootdey">
     <div className="panel panel-default panel-order">
         <div className="panel-heading">
-            <strong>Order history</strong>
+            <h4 className='text-center m-3'>Order history</h4>
+            <hr />
           
         </div>
 
@@ -33,28 +34,30 @@ const YourOrders = () => {
             {
                 orders && 
                 orders.map((order:any , index:number) => (
-                    <div className="row mt-3">
+                    <div className="row mt-4 title-order">
                      <div className="col-md-4">
-                     <span><strong>Order name</strong></span> <span className="label label-info">{order.name}</span><br />
+                     <span><strong>Name: </strong></span> <span className="label label-info">{order.name}</span><br />
                      </div>
                      <div className="col-md-8">
-                     <span><strong>Order Address</strong></span> <span className="label label-info">{order.address}</span><br />
+                     <span><strong>Address: </strong></span> <span className="label label-info">{order.address}</span><br />
                      </div>
                      { order.products.map((prod:any) => (
-                      <div className='row'>
+                      <div className='row p-2  border mb-4'>
                       <div className="col-md-2">
                         <img src={prod.prod.imageLink} className="media-object img-thumbnail" /></div>
                        <div className="col-md-10">
-                           <div className="row">
+                           <div className="row product-details">
                                <div className="col-md-12">
-                                   <h4>{prod.prod.name}</h4>
-                                  <h6>Quantity : {prod.qnt} , Price : {prod.prod.price}</h6>  <br />
+                                   <h5>{prod.prod.name}</h5>
+                                    <p>{prod.prod.desc}</p>
+                                   <p>Quantity : {prod.qnt} , Price : {prod.prod.price}</p>  <br />
                               </div>
                            </div>
                        </div>
                       </div>
                      )) }
-                    <div className="col-md-12">order made on: {order.date.substring(0,10)} </div>
+                    <div className="col-md-12"><p 
+                    id='Orderdate'>Order made on: {order.date.substring(0,10)} </p></div>
                    </div>
                 ))
                 }

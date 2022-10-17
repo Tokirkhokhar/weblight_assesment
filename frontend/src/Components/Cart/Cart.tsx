@@ -30,7 +30,7 @@ const Cart = () => {
     copyProd[id.index].qnt = copyProd[id.index].qnt + 1;
     setProduct(products);
     // change Total
-    let tNum:any = total
+    let tNum:number = total
     tNum += copyProd[id.index].prod.price;
      setTotal(tNum)
     
@@ -42,13 +42,14 @@ const Cart = () => {
     if (copyProd[id.index].qnt > 1) {
       copyProd[id.index].qnt = copyProd[id.index].qnt - 1;
       setProduct(products);
-      let tNum:any = total
+      let tNum:number = total
       tNum -= copyProd[id.index].prod.price;
       setTotal(tNum)
     }
     const ele = document.getElementById(id.index) as HTMLInputElement;
     ele?.stepDown();
   };
+  
   const sendRequest = async () => {
     const res:any = await axios
       .post("http://localhost:5000/api/order/addNewOrder", formData )
@@ -91,7 +92,9 @@ const Cart = () => {
                       <h3 className="mb-5 pt-2 text-center fw-bold text-uppercase">
                         Your products
                       </h3>
-                      {products &&
+                      {
+                      products 
+                      &&
                         products.map((product: any, index: number) => (
                           <div key={index}>
                             <div className="d-flex align-items-center mb-5">

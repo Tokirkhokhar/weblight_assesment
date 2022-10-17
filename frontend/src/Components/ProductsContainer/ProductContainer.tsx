@@ -50,6 +50,10 @@ const ProductContainer = () => {
          max=1000;
          min=501;
         break;
+      case "3":
+        max = 1000000
+        min = 1001;
+        break;
       default:
          min = 0
          max = 100000000
@@ -61,13 +65,17 @@ const ProductContainer = () => {
         break;
       case "1":
         cat="furnished"
-         break;
+        break;
+      case "2":
+        cat="fashion"
+        break;
      
     }
     let result= prevProduct.filter( function(product:any){
         console.log(max);
         
-      return(product.price <= max && product.price >= min  && (category!="-1"?product.catName==cat:true))
+      return(product.price <= max && product.price >= min
+          && (category!="-1"?product.catName==cat:true))
     })
     setproducts(result);
     
@@ -83,6 +91,7 @@ const ProductContainer = () => {
                   <option selected value="-1">Category</option>
                   <option value="0">Electronic</option>
                   <option value="1">Furnished</option>
+                  <option value="2">Fashion</option>
                 </select>
         </div>
         <div className="dropdown" onChange={handleChangePrice}>
@@ -91,9 +100,10 @@ const ProductContainer = () => {
                   <option value="0">0-100</option>
                   <option value="1">100-500</option>
                   <option value="2">500-1000</option>
+                  <option value="3">Above 1000</option>
                 </select>
         </div>
-        <button type="button" className="btn btn-outline-danger" onClick={handleSbmit}>Search</button>
+        <button type="button" className="btn btn-primary" onClick={handleSbmit}>Search</button>
       </div>
       <Container className='p_container'>    
                 

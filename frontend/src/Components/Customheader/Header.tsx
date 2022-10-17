@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 
 const Header = () => {
   return (
-    <Navbar className='nav'>
+    <Navbar className='nav navbar-dark'>
     <Container className='container'>
     <Link to="./" style={{textDecoration:"none"}}><Navbar.Brand >Ecom</Navbar.Brand></Link>
       <Navbar.Toggle />
